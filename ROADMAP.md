@@ -1,19 +1,21 @@
 # Roadmap
 
 ## M0 — Repository and build foundation
-- [x] Create a dedicated repository.
+- [x] Create dedicated repository.
 - [x] Add native Android project structure and a minimal Compose screen.
 - [x] Add security and architecture notes.
-- [x] Add a basic CI workflow.
-- [ ] Confirm CI passes on GitHub.
-- [ ] Add Gradle wrapper and verify reproducible builds.
+- [x] Add CI build workflow.
+- [x] Confirm Android debug build passes on GitHub Actions.
+- [ ] Add Gradle wrapper and verify reproducible local builds.
 
-## M1 — Local task loop
-- [ ] Task input and validation.
-- [ ] Deterministic task-plan model.
-- [ ] Visible task state machine: planned, awaiting approval, running, verifying, done, failed, cancelled.
-- [ ] Cancel and timeout behavior.
-- [ ] Unit tests for planner and approval rules.
+## M1 — Local task-planning loop
+- [x] Bangla task input and basic validation.
+- [x] Deterministic task-plan model.
+- [x] Flag potentially consequential tasks for confirmation.
+- [x] Add unit tests for planner and approval classification.
+- [x] Show a visible plan in the Android UI.
+- [ ] Expand classifier tests for ambiguous and adversarial inputs.
+- [ ] Add UI/instrumentation tests on an emulator.
 
 ## M2 — Memory
 - [ ] Local Room database for user-approved notes and task summaries.
@@ -21,10 +23,11 @@
 - [ ] Retention controls and sensitive-data exclusions.
 
 ## M3 — AI connection
-- [ ] Backend proxy using a server-held provider key.
-- [ ] Structured outputs and tool-call validation.
-- [ ] Rate limits, cost caps, request timeouts, and redacted observability.
-- [ ] Clear status when the model or network is unavailable.
+- [ ] Design a backend proxy using a server-held provider key.
+- [ ] Add structured outputs and tool-call validation.
+- [ ] Add rate limits, cost caps, request timeouts, and redacted observability.
+- [ ] Show clear status when the model or network is unavailable.
+- [ ] Keep model calls disabled until configuration and privacy notes are complete.
 
 ## M4 — Narrow Android actions
 - [ ] Start with a harmless, allowlisted intent.
@@ -35,4 +38,4 @@
 ## M5 — Improvement loop
 - [ ] Save user-approved lessons from completed tasks.
 - [ ] Add regression tests for previously fixed failures.
-- [ ] Propose code changes as reviewable pull requests, never silently self-deploy.
+- [ ] Propose code changes as reviewable commits or pull requests, never silently self-deploy.
