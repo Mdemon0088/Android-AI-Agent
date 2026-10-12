@@ -17,10 +17,13 @@
 - [ ] Expand classifier tests for ambiguous and adversarial inputs.
 - [ ] Add UI/instrumentation tests on an emulator.
 
-## M2 — Memory
-- [ ] Local Room database for user-approved notes and task summaries.
-- [ ] Search, edit, export, and delete memory.
-- [ ] Retention controls and sensitive-data exclusions.
+## M2 — Local memory
+- [x] Add app-private SQLite storage for plans the user explicitly chooses to save.
+- [x] Show saved plans in the app.
+- [x] Allow individual saved plans to be deleted.
+- [ ] Add SQLite instrumentation tests for save/list/delete and lifecycle behavior.
+- [ ] Add a user-facing clear-all and export option after privacy review.
+- [ ] Add memory retention controls and sensitive-data exclusions.
 
 ## M3 — AI connection
 - [ ] Design a backend proxy using a server-held provider key.
