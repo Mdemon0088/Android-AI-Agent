@@ -1,4 +1,4 @@
-name: Android CI
+name: Android and API CI
 
 on:
   push:
@@ -11,27 +11,36 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  backend-tests:
+    name: Test secure API without credentials
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Run backend tests
+        run: node --test server/test/*.test.js
+
+  android-build:
     name: Test and compile Android app
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "17"
-
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: "8.9"
-
       - name: Run local unit tests and build debug APK
         run: gradle --no-daemon testDebugUnitTest assembleDebug
-
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
         with:
