@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   build:
-    name: Compile Android app
+    name: Test and compile Android app
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -29,5 +29,13 @@ jobs:
         with:
           gradle-version: "8.9"
 
-      - name: Build debug APK
-        run: gradle --no-daemon assembleDebug
+      - name: Run local unit tests and build debug APK
+        run: gradle --no-daemon testDebugUnitTest assembleDebug
+
+      - name: Upload debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: nur-ai-debug-apk
+          path: app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 7
